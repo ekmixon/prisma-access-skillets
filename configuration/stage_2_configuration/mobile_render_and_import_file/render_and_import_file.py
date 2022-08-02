@@ -52,13 +52,17 @@ def cli(target_ip, target_port, target_username, target_password, include_svc_se
 
     # creating the jinja context from the skillet vars
     print('Reading in skillet variables')
-    context = dict()
-    context['include_svc_setup'] = include_svc_setup
-    context['infra_subnet'] = infra_subnet
-    context['infra_bgp_as'] = infra_bgp_as
-    context['portal_hostname'] = portal_hostname
-    context['deployment_region'] = deployment_region
-    context['deployment_locations_americas'] = deployment_locations_americas.split(',')
+    context = {
+        'include_svc_setup': include_svc_setup,
+        'infra_subnet': infra_subnet,
+        'infra_bgp_as': infra_bgp_as,
+        'portal_hostname': portal_hostname,
+        'deployment_region': deployment_region,
+        'deployment_locations_americas': deployment_locations_americas.split(
+            ','
+        ),
+    }
+
     context['deployment_locations_europe'] = deployment_locations_europe.split(',')
     context['deployment_locations_apac'] = deployment_locations_apac.split(',')
     context['ip_pool_cidr'] = ip_pool_cidr

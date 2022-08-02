@@ -20,10 +20,9 @@ accounts_str = output.getvalue()
 try:
     accounts_json = json.loads(accounts_str)
 
-    account_list = list()
+    account_list = []
     for account in accounts_json:
-        out_dict = dict()
-        out_dict['key'] = account.get('name', 'Unknown Name')
+        out_dict = {'key': account.get('name', 'Unknown Name')}
         out_dict['value'] = account.get('id', 'Unknown Id')
         account_list.append(out_dict)
 

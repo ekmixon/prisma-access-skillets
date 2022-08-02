@@ -63,7 +63,7 @@ def create_keypair(private_key_path: str) -> str:
 
     public_key_contents = f'{pub.get_name()} {pub.get_base64()} panhandler'
 
-    with open("%s.pub" % private_key_path, "w") as f:
+    with open(f"{private_key_path}.pub", "w") as f:
         f.write(public_key_contents)
 
     return public_key_contents
@@ -80,10 +80,7 @@ def main():
     # ensure proper permissions are set the key here or SSH will refuse to use it
     os.system(f'chmod 600 "{key_path}"')
 
-    status = dict()
-    status['public_key'] = public_key
-    status['private_key_path'] = key_path
-
+    status = {'public_key': public_key, 'private_key_path': key_path}
     return json.dumps(status)
 
 
